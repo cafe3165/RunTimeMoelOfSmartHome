@@ -98,6 +98,24 @@ public class AirConditionImpl implements AirCondition {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	
+
+
+
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void setType(String Type) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

@@ -25,5 +25,8 @@ public interface AirCondition {
 	void setStatus(String Status);
 	String getStatus();
 	
+	void setType(String Type);
+	String getType();
+	
     
 }

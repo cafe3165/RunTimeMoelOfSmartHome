@@ -5,21 +5,21 @@ import java.util.List;
 import java.util.Map;
 
 import com.appleyk.Proxy.runtime.AirCondition;
+import com.appleyk.Proxy.runtime.Light;
 
-public class Devices {
-
-	public List<String> ACIdList = new ArrayList<String>();
+public class Lights {
+	public List<String> IdList = new ArrayList<String>();
 
 	public void addlist(String deviceId) {
-		ACIdList.add(deviceId);
+		IdList.add(deviceId);
 	}
 
 	public List<String> list(boolean f) {
 		if (f) {
-			System.out.println(ACIdList);
+			System.out.println(IdList);
 		}
 
-		return ACIdList;
+		return IdList;
 
 	}
 
@@ -29,6 +29,7 @@ public class Devices {
 
 //		根据底层设备id 如A0找到对应的运行时设备对象id
 		String RuntimeDeviceId = "";
+		
 		for (String rid : idmaps.keySet()) {
 			if (rid.equals(UnderDeviceId)) {
 				RuntimeDeviceId = idmaps.get(rid);
@@ -55,17 +56,18 @@ public class Devices {
 		}
 //		将找到的底层设备实例化为运行时空调
 		Object runtimeDevice = underDevice;
-		AirCondition airCon = (AirCondition) runtimeDevice;
+		Light light = (Light) runtimeDevice;
 
 		if (f) {
-			System.out.println("DId: " + airCon.getID());
-			System.out.println("DName: " + airCon.getDName());
-			System.out.println("LName: " + airCon.getLName());
-			System.out.println("Status: " + airCon.getStatus());
-			System.out.println("Value: " + airCon.getT());
+			System.out.println("DId: " + light.getID());
+			System.out.println("DName: " + light.getDName());
+			System.out.println("Type: " + light.getType());
+			System.out.println("LName: " + light.getLName());
+			System.out.println("Status: " + light.getStatus());
+			System.out.println("Value: " + light.getB());
 		}
 
-		return airCon;
+		return light;
 	}
 
 }

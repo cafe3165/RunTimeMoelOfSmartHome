@@ -13,6 +13,7 @@ public class Panasonic {
 	private String location;
 	private String deviceName;
 	private String status;
+	private String type;
     
 	public String getStatus() {
 		return status;
@@ -74,5 +75,13 @@ public class Panasonic {
 	public void setTemperature(double t) {
 		System.out.println("松下空调温度设置为： "+t);
 		Temperature = t;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

@@ -12,6 +12,7 @@ import com.appleyk.Proxy.virtualObejct.GenRTModel.genUser;
 import com.appleyk.Proxy.virtualObejct.init.initConcept;
 import com.appleyk.Proxy.virtualObejct.Context;
 import com.appleyk.Proxy.virtualObejct.Contexts;
+import com.appleyk.Proxy.virtualObejct.Lights;
 import com.appleyk.Proxy.virtualObejct.Location;
 import com.appleyk.Proxy.virtualObejct.Locations;
 import com.appleyk.Proxy.virtualObejct.Service;
@@ -19,13 +20,15 @@ import com.appleyk.Proxy.device.Airconditioner;
 import com.appleyk.Proxy.device.Gree;
 import com.appleyk.Proxy.device.Panasonic;
 import com.appleyk.Proxy.device.Philips;
+import com.appleyk.Proxy.map.config.ConfigAirConditioner;
+import com.appleyk.Proxy.map.config.ConfigDevices;
 import com.appleyk.Proxy.device.Midea;
 import com.appleyk.Proxy.device.Opple;
 import com.appleyk.Proxy.runtime.AirCleaner;
 import com.appleyk.Proxy.runtime.AirCleanerImpl;
 import com.appleyk.Proxy.runtime.AirCondition;
 
-import com.appleyk.Proxy.virtualObejct.Devices;
+import com.appleyk.Proxy.virtualObejct.AirConditioners;
 import com.appleyk.Proxy.runtime.Light;
 import com.appleyk.Proxy.runtime.LightImpl;
 import com.appleyk.Proxy.util.charUtil;
@@ -104,41 +107,47 @@ public class Relation {
 		System.out.println("系统初始化开始。");
 
 //		生成设备
-		Devices airConditions = new Devices();
-		List dList = genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, airConditions);
-
+		AirConditioners airConditions = new AirConditioners();
+		Lights lights = new Lights();
+		Map<String, Object> typeMap=new HashMap<>();
+		typeMap.put("AirConditioners", airConditions);
+		typeMap.put("Lights", lights);
+		
+//		List dList = genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, airConditions);
+		Map<String, List<Object>> dmap=genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, typeMap);
+		
 //		生成服务
 		Services services = new Services();
-		genService.genS(idmaps, SerDevMaps, serMap, dList, services);
+		genService.genS(idmaps, SerDevMaps, serMap, dmap, services);
 		List<String> SList = services.list(false);
 
 //		生成位置
 		Locations locations = new Locations();
 		genLocation.genL(locIdNameMap, locationMap, objMaps, SerDevMaps, idmaps, locations);
 		List<String> LList = locations.list(false);
-
-//		生成用户
-		Users users = new Users();
-		genUser.genU(locIdNameMap, userMap, userIdNameMap, users);
-		List<String> UList = users.list(false);
+//
+////		生成用户
+//		Users users = new Users();
+//		genUser.genU(locIdNameMap, userMap, userIdNameMap, users);
+//		List<String> UList = users.list(false);
 		
 //		创建位于关系
-		LocatedIn.createLocatedIn(UList, LList, userMap, locationMap);
-		LocatedIn.createLocatedIn(airConditions.list(false), LList, uidMaps, locationMap);
+//		LocatedIn.createLocatedIn(UList, LList, userMap, locationMap);
+//		LocatedIn.createLocatedIn(airConditions.list(false), LList, uidMaps, locationMap);
 
 //		生成环境
-		Contexts contexts = new Contexts();
-		genContext.genC(serConMap, userIdNameMap, userMap, serMap, contMap, services, contexts);
-		List<String> CList = contexts.list(false);
+//		Contexts contexts = new Contexts();
+//		genContext.genC(serConMap, userIdNameMap, userMap, serMap, contMap, services, contexts);
+//		List<String> CList = contexts.list(false);
 
-		System.out.println("系统初始化结束。");
-		System.out.println("测试开始");
-		if (!cmdMaps.get("attribute").equals("none")) {
-			TestCmd.testCmd(cmdMaps, services, SerDevMaps, idmaps, idObjmaps, objMaps, serMap, contMap);
-		} else {
-			System.out.println("这是开关操作");
-			TestCmd.testCmd2(cmdMaps, airConditions, idmaps, idObjmaps, objMaps);
-		}
+//		System.out.println("系统初始化结束。");
+//		System.out.println("测试开始");
+//		if (!cmdMaps.get("attribute").equals("none")) {
+//			TestCmd.testCmd(cmdMaps, services, SerDevMaps, idmaps, idObjmaps, objMaps, serMap, contMap);
+//		} else {
+//			System.out.println("这是开关操作");
+//			TestCmd.testCmd2(cmdMaps, airConditions, idmaps, idObjmaps, objMaps);
+//		}
 //
 //		inference.judgeContext(contexts, services, serMap, contMap);
 //		inference.changeContext(services, contexts, serMap, contMap);
@@ -207,11 +216,9 @@ public class Relation {
 
 	public static void main(String[] args) throws Exception {
 		Map<String, String> cmdMaps = new HashMap<>();
-		Configuration.config(classMaps, apiMaps);
-
+		ConfigDevices.config(classMaps, apiMaps);
 //		String filePath = "C:\\Users\\more\\Desktop\\code\\exttst.txt";
 		String filePath = "exttst.txt";
-
 		cmdMaps = fileUtil.fileOp(filePath);
 //		System.out.println(cmdMaps);
 		generateDeviceAndRuntime(cmdMaps);

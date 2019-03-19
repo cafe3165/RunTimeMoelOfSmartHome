@@ -34,7 +34,8 @@ public class findUtil {
 		return d;
 
 	}
-
+	
+	// 根据命令找到操作列表
 	public static Map<String, String> findSer(Map<String, String> cmdMaps, Services services,
 			Map<String, Object> serMap) throws InterruptedException {
 		Map<String, String> doMap = new HashMap<>();

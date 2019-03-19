@@ -7,6 +7,7 @@ public class Service {
 	private String DName;
 	private String LName;
 	private String CType;
+	private String DBrand;
 	private String Effect;
 	private String Status;
 	private double SValue;
@@ -85,6 +86,14 @@ public class Service {
 
 	public void doService() {
 		
+	}
+
+	public String getDBrand() {
+		return DBrand;
+	}
+
+	public void setDBrand(String dBrand) {
+		DBrand = dBrand;
 	}
 
 }

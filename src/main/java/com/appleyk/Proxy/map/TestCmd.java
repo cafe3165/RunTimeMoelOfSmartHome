@@ -5,17 +5,17 @@ import java.util.Map;
 
 import com.appleyk.Proxy.runtime.AirCondition;
 import com.appleyk.Proxy.util.sleepUtil;
-import com.appleyk.Proxy.virtualObejct.Devices;
+import com.appleyk.Proxy.virtualObejct.AirConditioners;
 import com.appleyk.Proxy.virtualObejct.Services;
 
 public class TestCmd {
 //	核心是去寻找设备，并改变其状态
-	public static void testCmd2(Map<String, String> cmdMaps, Devices devices,Map<String, String> idmaps, Map<String, Object> idObjmaps, Map<Object, Object> objMaps) {
+	public static void testCmd2(Map<String, String> cmdMaps, AirConditioners airConditioners,Map<String, String> idmaps, Map<String, Object> idObjmaps, Map<Object, Object> objMaps) {
 
 //		System.out.println(cmdMaps);
 		Object airCon = null;
-		for (String did : devices.list(false)) {
-			AirCondition airCondition = (AirCondition) devices.ListProperties(did, objMaps, idObjmaps, idmaps, false);
+		for (String did : airConditioners.list(false)) {
+			AirCondition airCondition = (AirCondition) airConditioners.ListProperties(did, objMaps, idObjmaps, idmaps, false);
 			if (airCondition.getLName().equals(cmdMaps.get("location"))) {
 				airCon = airCondition;
 				break;

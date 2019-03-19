@@ -34,6 +34,7 @@ public class Users {
 		System.out.println("UId: " + u.getUId());
 		System.out.println("UName: " + u.getUName());
 		System.out.println("LName: " + u.getLName());
+		System.out.println(u.getContextList());
 
 	}
 

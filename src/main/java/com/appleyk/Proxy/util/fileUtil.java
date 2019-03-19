@@ -31,8 +31,8 @@ public class fileUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("已读取命令：" + tempList.get(tempList.size() - 1));
-		System.out.println("正在进行解析......");
+//		System.out.println("已读取命令：" + tempList.get(tempList.size() - 1));
+//		System.out.println("正在进行解析......");
 		tempList.remove(tempList.size() - 1);
 		for (int i = 0; i < tempList.size(); i++) {
 			String tString = tempList.get(i);
@@ -46,8 +46,8 @@ public class fileUtil {
 		if (map.size() == 3) {
 			map.put("attribute", "none");
 		}
-		System.out.println("解析结果如下：");
-		charUtil.outPutInfo(map);
+//		System.out.println("解析结果如下：");
+//		charUtil.outPutInfo(map);
 		return map;
 
 	}

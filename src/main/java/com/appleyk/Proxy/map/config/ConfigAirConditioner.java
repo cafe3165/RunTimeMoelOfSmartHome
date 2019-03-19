@@ -1,4 +1,4 @@
-package com.appleyk.Proxy.map;
+package com.appleyk.Proxy.map.config;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ import com.appleyk.Proxy.runtime.AirConditionImpl;
 import com.appleyk.Proxy.runtime.Light;
 import com.appleyk.Proxy.runtime.LightImpl;
 
-public class Configuration {
+public class ConfigAirConditioner {
 	/**
 	 * 这边应该是读取配置文件得到映射关系 ，但我这边直接初始化映射关系
 	 */
@@ -45,6 +45,7 @@ public class Configuration {
 		classMaps.put(Philips.class.getName(), AirCleanerImpl.class.getName());
 
 		// 方法之间的映射关系
+
 		// 1.1空调的降温升温方法
 		apiMaps.put(AirCondition.class.getName() + "." + AirCondition.class.getMethod("cool").getName(),
 				Arrays.asList(new String[] { Gree.class.getName() + "." + Gree.class.getMethod("cool").getName(),
@@ -52,7 +53,7 @@ public class Configuration {
 		apiMaps.put(AirCondition.class.getName() + "." + AirCondition.class.getMethod("warm").getName(),
 				Arrays.asList(new String[] { Gree.class.getName() + "." + Gree.class.getMethod("warm").getName(),
 						Panasonic.class.getName() + "." + Panasonic.class.getMethod("up").getName() }));
-
+		// 1.2空调的设置温度获取温度方法
 		apiMaps.put(AirCondition.class.getName() + "." + AirCondition.class.getMethod("setT", double.class).getName(),
 				Arrays.asList(new String[] {
 						Gree.class.getName() + "." + Gree.class.getMethod("setTemperature", double.class).getName(),
@@ -63,7 +64,7 @@ public class Configuration {
 						Gree.class.getName() + "." + Gree.class.getMethod("getTemperature").getName(),
 						Panasonic.class.getName() + "." + Panasonic.class.getMethod("getTemperature").getName() }));
 
-		// 1.2空调的设置、获取id方法
+		// 1.3空调的设置、获取id方法
 		apiMaps.put(AirCondition.class.getName() + "." + AirCondition.class.getMethod("setID", String.class).getName(),
 				Arrays.asList(new String[] {
 						Gree.class.getName() + "." + Gree.class.getMethod("setId", String.class).getName(),
@@ -72,7 +73,7 @@ public class Configuration {
 		apiMaps.put(AirCondition.class.getName() + "." + AirCondition.class.getMethod("getID").getName(),
 				Arrays.asList(new String[] { Gree.class.getName() + "." + Gree.class.getMethod("getId").getName(),
 						Panasonic.class.getName() + "." + Panasonic.class.getMethod("getId").getName() }));
-		// 1.3空调的设置获取地点方法
+		// 1.4空调的设置获取地点方法
 		apiMaps.put(
 				AirCondition.class.getName() + "." + AirCondition.class.getMethod("setLName", String.class).getName(),
 				Arrays.asList(new String[] {
@@ -82,7 +83,7 @@ public class Configuration {
 		apiMaps.put(AirCondition.class.getName() + "." + AirCondition.class.getMethod("getLName").getName(),
 				Arrays.asList(new String[] { Gree.class.getName() + "." + Gree.class.getMethod("getLocation").getName(),
 						Panasonic.class.getName() + "." + Panasonic.class.getMethod("getLocation").getName() }));
-//		1.4空调的状态设置获取方法
+		// 1.5空调的状态设置获取方法
 		apiMaps.put(
 				AirCondition.class.getName() + "." + AirCondition.class.getMethod("setStatus", String.class).getName(),
 				Arrays.asList(new String[] {
@@ -93,7 +94,7 @@ public class Configuration {
 				Arrays.asList(new String[] { Gree.class.getName() + "." + Gree.class.getMethod("getStatus").getName(),
 						Panasonic.class.getName() + "." + Panasonic.class.getMethod("getStatus").getName() }));
 
-//		1.5空调的名字设置获取方法
+		// 1.5空调的名字设置获取方法
 		apiMaps.put(
 				AirCondition.class.getName() + "." + AirCondition.class.getMethod("setDName", String.class).getName(),
 				Arrays.asList(new String[] {
@@ -104,7 +105,20 @@ public class Configuration {
 				Arrays.asList(new String[] {
 						Gree.class.getName() + "." + Gree.class.getMethod("getDeviceName").getName(),
 						Panasonic.class.getName() + "." + Panasonic.class.getMethod("getDeviceName").getName() }));
-
+		// 1.6空调设置获取品牌方法
+		apiMaps.put(
+				AirCondition.class.getName() + "." + AirCondition.class.getMethod("setType", String.class).getName(),
+				Arrays.asList(new String[] {
+						Gree.class.getName() + "." + Gree.class.getMethod("setType", String.class).getName(),
+						Panasonic.class.getName() + "."
+								+ Panasonic.class.getMethod("setType", String.class).getName() }));
+		apiMaps.put(AirCondition.class.getName() + "." + AirCondition.class.getMethod("getType").getName(),
+				Arrays.asList(new String[] {
+						Gree.class.getName() + "." + Gree.class.getMethod("getType").getName(),
+						Panasonic.class.getName() + "." + Panasonic.class.getMethod("getType").getName() }));
+		
+		
+		
 	}
 
 }

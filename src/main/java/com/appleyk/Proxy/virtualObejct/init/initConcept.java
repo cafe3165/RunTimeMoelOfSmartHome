@@ -14,7 +14,7 @@ public class initConcept {
 
 //	初始化服务
 	public static Object initService(String ServiceId, String DeviceId, String RutimeDeviceId, String DName,
-			String CType, String Effect, Object obj) {
+			String CType, String Effect, String DBrand, Object obj) {
 		Service ser = new Service();
 		ser.setServiceId(ServiceId);
 		ser.setDeviceId(DeviceId);
@@ -23,6 +23,7 @@ public class initConcept {
 		ser.setCType(CType);
 		ser.setEffect(Effect);
 		ser.setSValue(0.0);
+		ser.setDBrand(DBrand);
 
 		obj = ser;
 		return obj;
@@ -68,30 +69,46 @@ public class initConcept {
 	}
 
 // 	初始化位置
+	@SuppressWarnings("null")
 	public static Object initLocation(String LId, String LName, Object location, Map<Object, Object> objMaps,
 			Map<String, String> SerDevMaps, Map<String, String> idmaps) {
 
+//		System.out.println(objMaps);
+		
+		List<String> dname=new ArrayList<>();
+		for(Object to:objMaps.keySet()) {
+			String[] ol=objMaps.get(to).getClass().getName().split("\\.");
+			dname.add(ol[4]);
+		}
+		for(String i:dname) {
+			System.out.println(i);
+		}
+			
+		
+		
 		AirCondition tempA = null;
 		AirCondition tempB = null;
 //		{null=com.appleyk.Proxy.device.Gree@1b6d3586, null=com.appleyk.Proxy.device.Panasonic@4554617c}
 //		通过底层设备与运行时设备的映射找到底层设备对象underDevice
+		boolean f=false;
 		for (Object o : objMaps.keySet()) {
 			tempA = (AirCondition) o;
 			if (tempA.getLName().equals(LName)) {
 				tempB = tempA;
+				f=true;
+				
 			}
 		}
-
 		List<String> DIdList = new ArrayList<>();
 		List<String> SIdList = new ArrayList<>();
 		for (String DId : idmaps.keySet()) {
-			if (tempB.hashCode() == Integer.valueOf(idmaps.get(DId))) {
+			if (f&&tempB.hashCode() == Integer.valueOf(idmaps.get(DId))) {
 				DIdList.add(DId);
 			}
 		}
 
 		for (String SId : SerDevMaps.keySet()) {
-			if (tempB.hashCode() == Integer.valueOf(SerDevMaps.get(SId))) {
+			if (f&&tempB.hashCode() == Integer.valueOf(SerDevMaps.get(SId))) {
 				SIdList.add(SId);
 			}
 		}
@@ -119,7 +136,7 @@ public class initConcept {
 
 		return u;
 	}
-	
+
 //	初始化环境状态
 	public static Object initContext(String UName, String CType, double RMin, double RMax, String CId, Object context,
 			Map<String, String> userIdNameMap, Map<String, Object> userMap, Map<String, String> serConMap,
@@ -160,5 +177,5 @@ public class initConcept {
 		return c;
 
 	}
-	
+
 }
