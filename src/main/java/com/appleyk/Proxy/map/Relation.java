@@ -60,27 +60,20 @@ public class Relation {
 
 	// 类之间的映射 即 k - 底层设备类 v - 运行时设备类
 	public static Map<String, String> classMaps = new HashMap<>();
-
 	// 方法之间的映射 即 k - 运行时api v - 底层设备api
 	public static Map<String, List<String>> apiMaps = new HashMap<>();
-
 	// 底层设备对象与运行时对象之间的映射 k - 运行时对象 v - 底层设备对象
 	public static Map<Object, Object> objMaps = new HashMap<>();
-
 	// 运行时对象标识与运行时对象的映射 k-运行时对象的hashcode v-运行时对象
 	public static Map<String, Object> idObjmaps = new HashMap<>();
-
 	// 底层设备id与运行时对象标识的映射 k-底层设备id v-运行时对象的hashcode A1:685325104
 	public static Map<String, String> idmaps = new HashMap<>();
 	// 底层设备id与运行时对象的映射 k-底层设备id v-运行时对象
 	public static Map<String, Object> uidMaps = new HashMap<>();
-
 	// 服务id与运行时设备id的映射 k-服务id v-运行时设备id S11:2101973421
 	public static Map<String, String> SerDevMaps = new HashMap<>();
-
 //	存放服务id与服务对象的映射
 	public static Map<String, Object> serMap = new HashMap<>();
-
 //	存放服务id与环境id的映射
 	public static Map<String, String> serConMap = new HashMap<>();
 //	存放环境id与环境对象的映射
@@ -109,28 +102,29 @@ public class Relation {
 
 //		List<HashMap<String, Object>> idObjList = new ArrayList<HashMap<String,Object>>();
 		System.out.println("系统初始化开始。");
-		
+
 //		生成设备
-		
 		Devices airConditions = new Devices();
 		List dList = genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, airConditions);
+
 //		生成服务
 		Services services = new Services();
-		genService.genS(idmaps,SerDevMaps,serMap,dList,services);
+		genService.genS(idmaps, SerDevMaps, serMap, dList, services);
 		List<String> SList = services.list(false);
-//
+
 //		生成位置
 		Locations locations = new Locations();
 		genLocation.genL(locIdNameMap, locationMap, objMaps, SerDevMaps, idmaps, locations);
 		List<String> LList = locations.list(false);
-//
+
 //		生成用户
 		Users users = new Users();
 		genUser.genU(locIdNameMap, userMap, userIdNameMap, users);
 		List<String> UList = users.list(false);
+		
 //		创建位于关系
-//		LocatedIn.createLocatedIn(UList, LList, userMap, locationMap);
-//		LocatedIn.createLocatedIn(airCList, LList, uidMaps, locationMap);
+		LocatedIn.createLocatedIn(UList, LList, userMap, locationMap);
+		LocatedIn.createLocatedIn(airConditions.list(false), LList, uidMaps, locationMap);
 
 //		生成环境
 		Contexts contexts = new Contexts();
@@ -145,9 +139,9 @@ public class Relation {
 			System.out.println("这是开关操作");
 			TestCmd.testCmd2(cmdMaps, airConditions, idmaps, idObjmaps, objMaps);
 		}
-
-		inference.judgeContext(contexts, services, serMap, contMap);
-		inference.changeContext(services, contexts, serMap, contMap);
+//
+//		inference.judgeContext(contexts, services, serMap, contMap);
+//		inference.changeContext(services, contexts, serMap, contMap);
 
 	}
 
