@@ -18,21 +18,35 @@ public class genContext {
 		Context c11 = new Context();
 		Context c21 = new Context();
 
-		String CUName1 = "Jack";
-		String CCType1 = "temperature";
-		double RMin1 = 20.0;
-		double RMax1 = 30.0;
-		String CID1 = "C11";
+		String CUName11 = "Jack";
+		String CCType11 = "Temperature";
+		double RMin11 = 19.0;
+		double RMax11 = 22.0;
+		String CID11 = "C11";
+		
+		String CUName13 = "Jack";
+		String CCType13 = "Brightness";
+		double RMin13 = 20.0;
+		double RMax13 = 100.0;
+		String CID13 = "C12";
 
-		String CUName2 = "Ben";
-		String CCType2 = "temperature";
-		double RMin2 = 15.0;
-		double RMax2 = 25.0;
-		String CID2 = "C12";
+		String CUName21 = "Ken";
+		String CCType21 = "Temperature";
+		double RMin21 = 22.0;
+		double RMax21 = 26.0;
+		String CID21 = "C21";
+		
+		String CUName23 = "Ken";
+		String CCType23 = "Brightness";
+		double RMin23 = 20.0;
+		double RMax23 = 100.0;
+		String CID23 = "C23";
 
 		List<String> CIDList = new ArrayList<String>();
-		CIDList.add(CID1);
-		CIDList.add(CID2);
+		CIDList.add(CID11);
+		CIDList.add(CID13);
+		CIDList.add(CID21);
+		CIDList.add(CID23);
 
 //		服务与环境的绑定
 		int index = 0;
@@ -47,13 +61,13 @@ public class genContext {
 				continue;
 			}
 		}
-		c11 = (Context) initConcept.initContext(CUName1, CCType1, RMin1, RMax1, CID1, c11, userIdNameMap, userMap,
+		c11 = (Context) initConcept.initContext(CUName11, CCType11, RMin11, RMax11, CID11, c11, userIdNameMap, userMap,
 				serConMap, serMap);
 		c21 = (Context) initConcept.initContext(CUName2, CCType2, RMin2, RMax2, CID2, c21, userIdNameMap, userMap,
 				serConMap, serMap);
 		contMap.put(c11.getCId(), c11);
 		contMap.put(c21.getCId(), c21);
-		contexts.addlist(CID1);
+		contexts.addlist(CID11);
 		contexts.addlist(CID2);
 //		for(String cid:contexts.list(true)) {
 //			System.out.println("------------------");

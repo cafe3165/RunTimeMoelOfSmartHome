@@ -41,7 +41,7 @@ public class genLocation {
 		ls.addlist(l1.getLId());
 		ls.addlist(l2.getLId());
 		ls.addlist(l3.getLId());
-//		
+		
 //				ls.ListProperties(l1.getLId(), locationMap);
 //				ls.ListProperties(l2.getLId(), locationMap);
 //				ls.ListProperties(l3.getLId(), locationMap);

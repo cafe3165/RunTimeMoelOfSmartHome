@@ -43,6 +43,7 @@ public class Services {
 				s = (Service) sMap.get(sid);
 		}
 		if (f) {
+			System.out.println("-----------------------------");
 			System.out.println("ServiceId: " + s.getServiceId());
 			System.out.println("DeviceId: " + s.getDeviceId());
 			System.out.println("Brand: " + s.getDBrand());

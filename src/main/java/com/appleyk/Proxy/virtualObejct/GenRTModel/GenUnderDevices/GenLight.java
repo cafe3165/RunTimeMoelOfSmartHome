@@ -42,11 +42,11 @@ public class GenLight {
 		lights.addlist(Opple.getID());
 
 		List<String> lList = lights.list(false);
-		for (String underDeviceId : lList) {
-			System.out.println("---------------------------");
-			lights.ListProperties(underDeviceId, objMaps, idObjmaps, idmaps, true);
-
-		}
+//		for (String underDeviceId : lList) {
+//			System.out.println("---------------------------");
+//			lights.ListProperties(underDeviceId, objMaps, idObjmaps, idmaps, true);
+//
+//		}
 
 		uidMaps.put(Midea.getID(), Midea);
 		uidMaps.put(Opple.getID(), Opple);

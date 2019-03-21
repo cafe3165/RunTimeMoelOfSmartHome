@@ -115,7 +115,6 @@ public class Relation {
 		
 //		List dList = genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, airConditions);
 		Map<String, List<Object>> dmap=genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, typeMap);
-		
 //		生成服务
 		Services services = new Services();
 		genService.genS(idmaps, SerDevMaps, serMap, dmap, services);
@@ -125,16 +124,19 @@ public class Relation {
 		Locations locations = new Locations();
 		genLocation.genL(locIdNameMap, locationMap, objMaps, SerDevMaps, idmaps, locations);
 		List<String> LList = locations.list(false);
+//		System.out.println(LList);
 //
-////		生成用户
-//		Users users = new Users();
-//		genUser.genU(locIdNameMap, userMap, userIdNameMap, users);
-//		List<String> UList = users.list(false);
+//		生成用户
+		Users users = new Users();
+		genUser.genU(locIdNameMap, userMap, userIdNameMap, users);
+		List<String> UList = users.list(false);
+//		System.out.println(UList);
 		
 //		创建位于关系
 //		LocatedIn.createLocatedIn(UList, LList, userMap, locationMap);
 //		LocatedIn.createLocatedIn(airConditions.list(false), LList, uidMaps, locationMap);
 
+		
 //		生成环境
 //		Contexts contexts = new Contexts();
 //		genContext.genC(serConMap, userIdNameMap, userMap, serMap, contMap, services, contexts);

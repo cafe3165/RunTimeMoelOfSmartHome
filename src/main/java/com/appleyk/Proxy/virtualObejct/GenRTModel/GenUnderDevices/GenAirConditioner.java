@@ -54,12 +54,12 @@ public class GenAirConditioner {
 		List<String> airCList = airConditioners.list(false);
 //				根据设备id获得所有设备的属性
 //				System.out.println("设备属性列表：");
-				for (String underDeviceId : airCList) {
-					System.out.println("---------------------------");
-					airConditioners.ListProperties(underDeviceId, objMaps, idObjmaps, idmaps,true);
-					
-		
-				}
+//				for (String underDeviceId : airCList) {
+//					System.out.println("---------------------------");
+//					airConditioners.ListProperties(underDeviceId, objMaps, idObjmaps, idmaps,true);
+//					
+//		
+//				}
 
 		uidMaps.put(ndAirCondition.getID(), ndAirCondition);
 		uidMaps.put(panasonic.getID(), panasonic);

@@ -28,9 +28,9 @@ public class genDevice {
 		
 		
 		aList=GenAirConditioner.genAirConditioner(objMaps, idObjmaps, idmaps, uidMaps, (AirConditioners) typeMap.get("AirConditioners"));
-		dmaps.put("AirConditioner", aList);
+		dmaps.put("airConditioner", aList);
 		lList=GenLight.genLight(objMaps, idObjmaps, idmaps, uidMaps, (Lights)typeMap.get("Lights"));
-//		dmaps.put("AirConditioner", aList);
+		dmaps.put("light", lList);
 		
 		
 		
