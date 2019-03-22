@@ -1,6 +1,7 @@
 package com.appleyk.Proxy.device;
 
-public class Philips {
+public class Mi {
+	
 	private double PM2_5;
 	private String id;
 	private String locationName;
@@ -44,7 +45,9 @@ public class Philips {
 	public void setType(String type) {
 		this.type = type;
 	}
-
 	
+	public void purify() {
+		PM2_5-=1.0;
+	}
 
 }
