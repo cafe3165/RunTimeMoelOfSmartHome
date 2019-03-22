@@ -12,8 +12,10 @@ import com.appleyk.Proxy.map.findUtil;
 import com.appleyk.Proxy.runtime.AirCondition;
 import com.appleyk.Proxy.virtualObejct.AirConditioners;
 import com.appleyk.Proxy.virtualObejct.Lights;
+import com.appleyk.Proxy.virtualObejct.PMMonitors;
 import com.appleyk.Proxy.virtualObejct.GenRTModel.GenUnderDevices.GenAirConditioner;
 import com.appleyk.Proxy.virtualObejct.GenRTModel.GenUnderDevices.GenLight;
+import com.appleyk.Proxy.virtualObejct.GenRTModel.GenUnderDevices.GenPMMonitor;
 
 public class genDevice {
 
@@ -32,8 +34,8 @@ public class genDevice {
 		dmaps.put("airConditioner", aList);
 		lList=GenLight.genLight(objMaps, idObjmaps, idmaps, uidMaps, (Lights)typeMap.get("Lights"));
 		dmaps.put("light", lList);
-//		pmList=.genLight(objMaps, idObjmaps, idmaps, uidMaps, (Lights)typeMap.get("Lights"));
-//		dmaps.put("light", pmList);
+		pmList=GenPMMonitor.genPMMonitor(objMaps, idObjmaps, idmaps, uidMaps, (PMMonitors)typeMap.get("PMMonitors"));
+		dmaps.put("pmmonitor", pmList);
 		
 		
 		

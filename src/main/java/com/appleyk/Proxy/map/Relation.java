@@ -15,6 +15,7 @@ import com.appleyk.Proxy.virtualObejct.Contexts;
 import com.appleyk.Proxy.virtualObejct.Lights;
 import com.appleyk.Proxy.virtualObejct.Location;
 import com.appleyk.Proxy.virtualObejct.Locations;
+import com.appleyk.Proxy.virtualObejct.PMMonitors;
 import com.appleyk.Proxy.virtualObejct.Service;
 import com.appleyk.Proxy.device.Airconditioner;
 import com.appleyk.Proxy.device.Gree;
@@ -109,9 +110,12 @@ public class Relation {
 //		生成设备
 		AirConditioners airConditions = new AirConditioners();
 		Lights lights = new Lights();
+		PMMonitors pmMonitors=new PMMonitors();
 		Map<String, Object> typeMap=new HashMap<>();
 		typeMap.put("AirConditioners", airConditions);
 		typeMap.put("Lights", lights);
+		typeMap.put("PMMonitors", pmMonitors);
+		
 		
 //		List dList = genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, airConditions);
 		Map<String, List<Object>> dmap=genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, typeMap);
