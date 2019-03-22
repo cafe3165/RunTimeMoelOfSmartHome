@@ -173,7 +173,7 @@ public class genService {
 
 		services.addlist(SerDevMaps);
 //		List<String> SList = services.list(true);
-		outPutSer(services, serMap, true);
+		outPutSer(services, serMap, false);
 
 	}
 

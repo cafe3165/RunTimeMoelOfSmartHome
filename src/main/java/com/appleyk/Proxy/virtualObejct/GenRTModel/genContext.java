@@ -16,15 +16,16 @@ public class genContext {
 			Map<String, Object> userMap, Map<String, Object> serMap, Map<String, Object> contMap, Services services,
 			Contexts contexts) {
 		Context c11 = new Context();
+		Context c13 = new Context();
 		Context c21 = new Context();
+		Context c23 = new Context();
 
 		String CUName11 = "Jack";
 		String CCType11 = "Temperature";
 		double RMin11 = 19.0;
 		double RMax11 = 22.0;
 		String CID11 = "C11";
-		
-		String CUName13 = "Jack";
+
 		String CCType13 = "Brightness";
 		double RMin13 = 20.0;
 		double RMax13 = 100.0;
@@ -35,8 +36,7 @@ public class genContext {
 		double RMin21 = 22.0;
 		double RMax21 = 26.0;
 		String CID21 = "C21";
-		
-		String CUName23 = "Ken";
+
 		String CCType23 = "Brightness";
 		double RMin23 = 20.0;
 		double RMax23 = 100.0;
@@ -61,19 +61,30 @@ public class genContext {
 				continue;
 			}
 		}
+		System.out.println(serConMap);
 		c11 = (Context) initConcept.initContext(CUName11, CCType11, RMin11, RMax11, CID11, c11, userIdNameMap, userMap,
 				serConMap, serMap);
-		c21 = (Context) initConcept.initContext(CUName2, CCType2, RMin2, RMax2, CID2, c21, userIdNameMap, userMap,
+		c13 = (Context) initConcept.initContext(CUName11, CCType13, RMin13, RMax13, CID13, c13, userIdNameMap, userMap,
 				serConMap, serMap);
+
+		c21 = (Context) initConcept.initContext(CUName21, CCType21, RMin21, RMax21, CID21, c21, userIdNameMap, userMap,
+				serConMap, serMap);
+		c23 = (Context) initConcept.initContext(CUName21, CCType23, RMin23, RMax23, CID23, c23, userIdNameMap, userMap,
+				serConMap, serMap);
+
 		contMap.put(c11.getCId(), c11);
 		contMap.put(c21.getCId(), c21);
+		contMap.put(c13.getCId(), c13);
+		contMap.put(c23.getCId(), c23);
 		contexts.addlist(CID11);
-		contexts.addlist(CID2);
-//		for(String cid:contexts.list(true)) {
-//			System.out.println("------------------");
-//			contexts.ListProperties(cid, contMap,true);
-//			
-//		}
+		contexts.addlist(CID13);
+		contexts.addlist(CID21);
+		contexts.addlist(CID23);
+		for (String cid : contexts.list(true)) {
+			System.out.println("------------------");
+			contexts.ListProperties(cid, contMap, true);
+
+		}
 
 	}
 

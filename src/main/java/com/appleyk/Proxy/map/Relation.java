@@ -115,16 +115,18 @@ public class Relation {
 		
 //		List dList = genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, airConditions);
 		Map<String, List<Object>> dmap=genDevice.genD(objMaps, idObjmaps, idmaps, uidMaps, typeMap);
-//		生成服务
-		Services services = new Services();
-		genService.genS(idmaps, SerDevMaps, serMap, dmap, services);
-		List<String> SList = services.list(false);
+
 
 //		生成位置
 		Locations locations = new Locations();
 		genLocation.genL(locIdNameMap, locationMap, objMaps, SerDevMaps, idmaps, locations);
 		List<String> LList = locations.list(false);
 //		System.out.println(LList);
+		
+//		生成服务
+		Services services = new Services();
+		genService.genS(idmaps, SerDevMaps, serMap, dmap, services);
+		List<String> SList = services.list(false);
 //
 //		生成用户
 		Users users = new Users();
@@ -138,9 +140,9 @@ public class Relation {
 
 		
 //		生成环境
-//		Contexts contexts = new Contexts();
-//		genContext.genC(serConMap, userIdNameMap, userMap, serMap, contMap, services, contexts);
-//		List<String> CList = contexts.list(false);
+		Contexts contexts = new Contexts();
+		genContext.genC(serConMap, userIdNameMap, userMap, serMap, contMap, services, contexts);
+		List<String> CList = contexts.list(false);
 
 //		System.out.println("系统初始化结束。");
 //		System.out.println("测试开始");

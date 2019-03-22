@@ -48,15 +48,15 @@ public class initConcept {
 //	从服务所绑定的设备中提取对应属性值
 	public static void SerMapDev_AirC(Object dev, Object ser) {
 		Service service = (Service) ser;
-
 		switch (service.getCType()) {
-		case "temperature":
+		case "Temperature":
 			AirCondition airc = (AirCondition) dev;
 			service.setLName(airc.getLName());
 			service.setStatus("off");
 			service.setSValue(airc.getT());
+			
 			break;
-		case "brightness":
+		case "Brightness":
 			Light light = (Light) dev;
 			service.setLName(light.getLName());
 			service.setStatus("off");
@@ -65,7 +65,26 @@ public class initConcept {
 		default:
 			break;
 		}
-
+//		System.out.println(service.getCType());
+//		if(service.getCType().equals("Temperature")) {
+//			AirCondition airc = (AirCondition) dev;
+//			System.out.println("***"+airc.getLName());
+//			service.setLName(airc.getLName());
+//			service.setStatus("off");
+//			service.setSValue(airc.getT());
+//			
+//		}
+//		else if(service.getCType().equals("Brightness")) {
+//			Light light = (Light) dev;
+//			service.setLName(light.getLName());
+//			service.setStatus("off");
+//			service.setSValue(light.getB());
+//			
+//		}
+		
+		
+		
+//		System.out.println(service.getStatus());
 //		Field[] fields = d.getClass().getDeclaredFields();
 //		List<String> atrrList = new ArrayList<>();
 
