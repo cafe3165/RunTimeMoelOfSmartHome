@@ -25,12 +25,15 @@ public class genDevice {
 		Map<String, List<Object>> dmaps=new HashMap<String, List<Object>>();
 		List<Object> aList=new ArrayList<>();
 		List<Object> lList=new ArrayList<>();
+		List<Object> pmList=new ArrayList<>();
 		
 		
 		aList=GenAirConditioner.genAirConditioner(objMaps, idObjmaps, idmaps, uidMaps, (AirConditioners) typeMap.get("AirConditioners"));
 		dmaps.put("airConditioner", aList);
 		lList=GenLight.genLight(objMaps, idObjmaps, idmaps, uidMaps, (Lights)typeMap.get("Lights"));
 		dmaps.put("light", lList);
+//		pmList=.genLight(objMaps, idObjmaps, idmaps, uidMaps, (Lights)typeMap.get("Lights"));
+//		dmaps.put("light", pmList);
 		
 		
 		

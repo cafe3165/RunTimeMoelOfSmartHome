@@ -9,7 +9,7 @@ public class ConfigDevices {
 		ConfigAirConditioner.config(classMaps, apiMaps);
 		ConfigLight.config(classMaps, apiMaps);
 		ConfigPMMonitor.config(classMaps, apiMaps);
-		ConfigAir2s.config(classMaps, apiMaps);
+//		ConfigAir2s.config(classMaps, apiMaps);
 		
 	}
 	
